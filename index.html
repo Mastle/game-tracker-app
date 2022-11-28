@@ -18,10 +18,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto">
                 <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="javascript:void(0);"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item ">
                     <a class="nav-link" href="javascript:void(0);"><i class="fa fa-gamepad"></i>Game List</a>
                 </li>
                 <li class="nav-item">
@@ -34,10 +34,17 @@
             </ul>
         </div>
     </nav>
-    <div>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis ducimus amet soluta quibusdam nisi fugiat unde magni itaque. Odit inventore voluptates enim dicta praesentium eligendi tempore voluptatum et deserunt totam..</p>
+    <section class="game-details">
+    <div class="container">
+        <form action="search.php" method="GET">
+            <input class="search-input form-control" type="text" name="search_query" placeholder="Look up a game..." />
+            <input class="btn btn-primary" type="submit" value="Search" />
+        </form>
     </div>
-   <!-- Next step: design and implement the search bar -->
+    <!-- Create a function that displays a random game when a user visits the website for the first time -->
+   
+</section>
+   <!-- Next step: set up the placeholder image for games and the details section (might want to use a frame for the game image) -->
 
 
 

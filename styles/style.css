@@ -15,6 +15,12 @@ i {
 	padding: 15px;
 	color: #fff;
 }
+
+.navbar-logo:hover{
+	color:#F2CB4B;
+	
+}
+
 .navbar-mainbg{
 	background-color: #5161ce;
 	padding: 0px;
@@ -164,4 +170,25 @@ i {
 		bottom: -25px;
 		left: -25px;
 	}
+}
+
+.game-details{
+	min-height: 100vh;
+	background-color: #F2CB4B;
+}
+
+.search-input{
+	display: inline;
+	width: 70%;
+	margin-top: 1.5rem;
+	border: 2px solid #cacfd5;
+
+}
+
+.search-input + input{
+	margin: 0 0 5px 5px;
+}
+
+.search-input + input:hover{
+	color:#F2CB4B;
 }
