@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles/style.css">
     <script defer src="scripts/script.js"></script>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css'><link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Game Tracker</title>
 </head>
 <body>
@@ -36,17 +37,54 @@
     </nav>
     <section class="game-details">
     <div class="container">
-        <form action="search.php" method="GET">
+        <!-- Looking ahead: Use sass to edit the spacer thingy for bigger margins, add that to the form margin -->
+        <!-- Change button color with SCSS -->
+        <form class="ms-5"action="search.php" method="GET">
             <input class="search-input form-control" type="text" name="search_query" placeholder="Look up a game..." />
             <input class="btn btn-primary" type="submit" value="Search" />
         </form>
     </div>
-    <!-- Create a function that displays a random game when a user visits the website for the first time -->
-   
+    <div class="container d-flex justify-content-center mt-5 pt-5">
+        <!-- Looking ahead: What should the proper size of each game image be? -->
+    <img class="framed" src="./assets/mock-game-image-1.jpg" alt="random image"> <!-- https://picsum.photos/seed/picsum/400/400 -->
+    </div>
+    <div class="container mt-5">
+        <ul class="pe-3 pt-2">
+            <li>
+                <span class="title">Director</span>
+                <span class="name">James</span>
+            </li>
+            <li>
+                <span class="title">Publisher</span>
+                <span class="name">Lauren</span>
+            </li>
+            <li>
+                <span class="title">Designer</span>
+                <span class="name">Marcus</span>
+            </li>
+            <li>
+                <span class="title">Writer</span>
+                <span class="name">Bryan</span>
+            </li>
+            <li>
+                <span class="title">Developer</span>
+                <span class="name">James</span>
+            </li>
+        </ul>
+    </div>
+    <div class="container d-flex justify-content-center mt-5">
+    <button class="btn btn-primary" type="submit">Add game to your list</button>
+    </div>
+    <!-- Looking ahead: Create a function that displays a random game when a user visits the website for the first time -->
 </section>
-   <!-- Next step: set up the placeholder image for games and the details section (might want to use a frame for the game image) -->
+  <!-- Clean up the code you've written so far, and then design the comment section -->
+<section class="comments">
+    <div class="ms-2 mt-3">
+    <i class="fa-regular fa-comments fa-2xl"></i>
+    <h3 class="d-inline">Comments</h2>
+    </div>
 
-
+</section>
 
 
 
