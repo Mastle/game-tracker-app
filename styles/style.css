@@ -64,7 +64,7 @@ ul {
     position: relative;
 }
 #navbarSupportedContent>ul>li.active>a{
-	color: var(--han-blue);
+	color: var(--maize);
 	background-color: transparent;
 	transition: all 0.7s;
 }
