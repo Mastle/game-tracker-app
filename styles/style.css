@@ -257,3 +257,13 @@ img.framed {
   .fa-comments{
 	color:var(--han-blue);
   }
+
+  .even-comment-bg-color{
+	background-color:var(--maize);
+  }
+
+  .container .comment img{
+	border-radius:60px;
+	width: 70px;
+	height: 70px;
+  }
