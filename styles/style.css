@@ -24,6 +24,8 @@ ul {
   }
 
 
+  /* --- Homepage --- */
+
   .navbar-logo{
 	padding: 15px;
 	color: #fff;
@@ -238,6 +240,11 @@ img.framed {
 
 
   @media(max-width: 768px){
+     
+	.game-details{
+		padding-bottom: 2rem;
+	}
+
 	.game-details ul{
 		flex-direction:column;
 		height:auto;
@@ -251,6 +258,8 @@ img.framed {
 	.game-details ul li:nth-child(4){
 		width: 80px;
 	}
+
+
 
   }
 
@@ -267,3 +276,18 @@ img.framed {
 	width: 70px;
 	height: 70px;
   }
+
+
+  /* --- Game List page --- */
+
+
+  .content-table{
+	border-collapse: collapse;
+    margin: 25px 0;
+	width: 80%;
+
+  }
+
+ .content-table thead tr{
+	text-align: left;
+ }

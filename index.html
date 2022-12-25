@@ -35,7 +35,7 @@
             </ul>
         </div>
     </nav>
-    <section class="game-details">
+    <section class="game-details pb-3">
     <div class="container">
         <!-- Looking ahead: Use sass to edit the spacer thingy for bigger margins, add that to the form margin -->
         <!-- Change button color with SCSS -->
@@ -49,7 +49,8 @@
     <img class="framed" src="./assets/mock-game-image-1.jpg" alt="random image"> <!-- https://picsum.photos/seed/picsum/400/400 -->
     </div>
     <div class="container mt-5">
-        <ul class="pe-3 pt-2">
+        <!-- Need to use a table for this section instead -->
+        <ul class="pe-3 pt-2">  
             <li>
                 <span class="title">Director</span>
                 <span class="name">James</span>
@@ -72,7 +73,7 @@
             </li>
         </ul>
     </div>
-    <div class="container d-flex justify-content-center mt-5">
+    <div class="btn-wrapper container d-flex justify-content-center mt-5">
     <button class="btn btn-primary" type="submit">Add game to your list</button>
     </div>
     <!-- Looking ahead: Create a function that displays a random game when a user visits the website for the first time -->
@@ -83,7 +84,7 @@
     <i class="fa-regular fa-comments fa-2xl"></i>
     <h3 class="d-inline">Comments</h2>
     </div>
-    <div class="container">
+    <div class="container  my-3">
     <div class="comment mx-2 py-2">
         <img src="assets/stock-user-pic-1.jpg" alt="">
         <span class="mx-2 fw-normal" style="color:var(--han-blue)">James serevino</span>
@@ -99,7 +100,7 @@
     </div>
    </div>
    <div class="even-comment-bg-color">
-   <div class="container">
+   <div class="container my-3">
     <div class="comment  py-2">
         <img src="assets/stock-user-pic-1.jpg" alt="">
         <span class="mx-2">James serevino</span>
@@ -115,7 +116,7 @@
     </div>
     </div>
 </div>
-    <div class="container">
+    <div class="container my-3">
     <div class="comment py-2">
         <img src="assets/stock-user-pic-1.jpg" alt="">
         <span class="mx-2" style="color:var(--han-blue)">James serevino</span>
@@ -131,7 +132,7 @@
     </div>
     </div>
     </section>
-<footer style="background-color: var(--han-blue); color: var(--maize);">
+<footer style="background-color: var(--han-blue); color: white;">
     <div class="container text-center">
     Copyright &copy Game Tracker
     </div>
@@ -160,6 +161,7 @@
 
 
 
-    <script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
+    <script src='https://code.jquery.com/jquery-3.4.1.min.js'></script> 
+    <!-- Can I replace the Jquery functionalities for the nav menu with Alpine JS? -->
 </body>
 </html>

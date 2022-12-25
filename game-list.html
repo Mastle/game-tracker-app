@@ -3,9 +3,63 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <script defer src="scripts/script.js"></script>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css'><link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Game Tracker</title>
 </head>
 <body>
-    <h1>This is the second page</h1>
+    <nav class="navbar navbar-expand-custom navbar-mainbg">
+        <a class="navbar-brand navbar-logo" href="#">Game Tracker</a>
+        <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars text-white"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto">
+                <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
+                <li class="nav-item">
+                    <a class="nav-link" href="./index.html"><i class="fa fa-home" aria-hidden="true"></i>Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="javascript:void(0);" onclick="runTimeout()"><i class="fa fa-gamepad"></i>Game List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0);"><i class="fa fa-user" aria-hidden="true"></i>
+                        login/logout</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0);"><i class="fa fa-info"></i>About</a>
+                </li>
+            </ul>
+        </div>
+    </nav>    
+    <h1 class="ms-5 mt-3" style="color: var(--han-blue)">Your Game List</h1>
+    <div class="container mt-5">
+     <table class="content-table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Rank</th>
+                <th>Title</th>
+                <th style="width: 400px;">Release date</th>
+                <th style="float: right">IGDB Rating</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><img style="width:30px" src="./assets/mock-game-image-1.jpg" alt=""></td>
+                <td>1</td>
+                <td>Metro: Exodus</td>
+                <td>12/12/2012</td>
+                <td style="float: right">100%</td>
+            </tr>
+         </tbody>
+     </table>
+    </div>
+
+
+    <script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
 </body>
 </html>
