@@ -1,7 +1,7 @@
 :root{
 	--maize:#F2CB4B;
 	--han-blue:#5161ce;
-
+    --border-color:#5162ce4f;
 }
 
 
@@ -285,9 +285,76 @@ img.framed {
 	border-collapse: collapse;
     margin: 25px 0;
 	width: 80%;
-
+	font-size: 1.25rem;
   }
 
- .content-table thead tr{
+
+
+ .content-table thead tr th{
 	text-align: left;
+	font-weight: 600;
+	color:#5161ce;
+	
+
+
  }
+
+ .content-table tbody tr:nth-child(even){
+     background-color: var(--maize);
+ }
+ .content-table thead tr th:nth-child(4){
+	width: 400px;
+  
+ }
+
+ .content-table thead tr th:nth-child(5){
+	float: right;
+	padding-right: 60px;
+ }
+
+ .content-table tbody tr td:nth-child(5){
+	float: right;
+	padding-top: 70px;
+	padding-right: 80px;
+ }
+
+ .content-table tbody tr td:nth-child(2){
+	padding-left:30px;
+ }
+
+ .content-table tbody tr td:nth-child(1) img{
+	width:100px;
+ }
+
+
+ .content-table th,
+ .content-table td {
+	 padding: 12px 15px;
+ }
+ 
+ 
+ .content-table tbody tr{
+	border-bottom: 3px solid var(--border-color);
+
+ }
+.content-table tbody{
+    border: 3px solid var(--border-color);
+	border-radius: 30px;
+}
+
+
+  /* --- Log In and Sign Up page --- */
+
+  .container .form-wrap{
+	border: 1px solid var(--han-blue);
+	background-color: var(--maize);
+  }
+
+  .form-wrap h1{
+	color: var(--han-blue);
+  }
+
+  .form-wrap label:not(.form-check-label){
+	font-weight:bold;
+	color: var(--han-blue);
+  }
