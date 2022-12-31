@@ -193,6 +193,13 @@ ul {
 	background-color: var(--maize);
 }
 
+
+
+.search-input-wrapper{
+	flex-basis: 60%;
+}
+
+
 .search-input{
 	display: inline;
 	width: 70%;
@@ -201,13 +208,11 @@ ul {
 
 }
 
+
 .search-input + input{
 	margin: 0 0 5px 5px;
 }
 
-.search-input + input:hover{
-	color:var(--maize);
-}
 
 img.framed {
 	box-shadow:
@@ -238,6 +243,14 @@ img.framed {
 	text-decoration: underline;
 	text-underline-offset: 6px;
   }
+
+  .btn-primary{
+	--bs-btn-bg: var(--han-blue);
+	--bs-btn-hover-bg: var(--han-blue);
+	--bs-btn-hover-color: var(--maize);
+  }
+
+  
 
 
   @media(max-width: 768px){

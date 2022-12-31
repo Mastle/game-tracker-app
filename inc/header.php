@@ -17,7 +17,6 @@
         <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fas fa-bars text-white"></i>
         </button>
-        <!-- Set each page's active link to the correspending nav item -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto">
                 <div class="hori-selector"><div class="left"></div><div class="right"></div></div>

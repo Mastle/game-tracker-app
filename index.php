@@ -1,17 +1,16 @@
+<!-- Minor adjustments on this page and then begin planning the backend (tomorrow) -->
 <?php include './inc/header.php' ?>
     <section class="game-details pb-3">
-    <div class="container">
-        <!-- Change button color with SCSS -->
-        <form class="ms-5"action="search.php" method="GET">
+    <div class="container d-flex justify-content-center">
+        <form class="search-input-wrapper ms-5 pt-5"action="search.php" method="GET">
             <input class="search-input form-control" type="text" name="search_query" placeholder="Look up a game..." />
             <input class="btn btn-primary" type="submit" value="Search" />
         </form>
     </div>
     <div class="container d-flex justify-content-center mt-5 pt-5">
-    <img class="framed" src="./assets/mock-game-image-1.jpg" alt="random image"> <!-- https://picsum.photos/seed/picsum/400/400 -->
+    <img class="framed" src="./assets/mock-game-image-1.jpg" alt="random image">
     </div>
-    <div class="container mt-5">
-        <!-- Consider using bootstrap tables for this part instead -->
+    <div class="container mt-5 pt-5">
         <ul class="pe-3 pt-2">  
             <li>
                 <span class="title">Director</span>
@@ -40,7 +39,7 @@
     </div>
     <!-- Looking ahead: Create a function that displays a random game when a user visits the website for the first time -->
 </section>
-  <!-- Clean up the code you've written so far, and then design the comment section -->
+  <!-- will edit the comment section once there is an actual comment system-->
 <section class="comments">
     <div class="ms-2 mt-3">
     <i class="fa-regular fa-comments fa-2xl"></i>
