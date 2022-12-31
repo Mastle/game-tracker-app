@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles/style.css">
-    <script defer src="scripts/script.js"></script>
+    <script defer src="./scripts/script.js"></script>
+    <!-- Try to recreate the nav menu with fontawesome latest version and Alpine JS after you're finished with the other parts -->
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css'><link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Game Tracker</title>
@@ -16,31 +17,23 @@
         <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fas fa-bars text-white"></i>
         </button>
+        <!-- Set each page's active link to the correspending nav item -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto">
                 <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
-                <li class="nav-item ">
-                    <a class="nav-link" href="javascript:void(0);"><i class="fa fa-home" aria-hidden="true"></i>Home</a>
+                <li class="nav-item" id="nav-item-one">
+                    <a class="nav-link" href="./index.php"><i class="fa fa-home" aria-hidden="true"></i>Home</a>
                 </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="javascript:void(0);" onclick="runTimeout()"><i class="fa fa-gamepad"></i>Game List</a>
+                <li class="nav-item " id="nav-item-two">
+                    <a class="nav-link" href="./game-list.php"><i class="fa fa-gamepad"></i>Game List</a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="javascript:void(0);"><i class="fa fa-user" aria-hidden="true"></i>
+                <li class="nav-item" id="nav-item-three">
+                    <a class="nav-link" href="./login.php"><i class="fa fa-user" aria-hidden="true"></i>
                         log in</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0);"><i class="fa fa-info"></i>About</a>
+                <li class="nav-item" id="nav-item-four">
+                    <a class="nav-link" href="./about.php"><i class="fa fa-info"></i>About</a>
                 </li>
             </ul>
         </div>
     </nav>
-<h1>About page</h1>
-      <footer style="background-color: var(--han-blue); color: white;">
-        <div class="container text-center">
-        Copyright &copy Game Tracker
-        </div>
-    </footer>
-    <script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
-    </body>
-    </html>

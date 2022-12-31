@@ -59,16 +59,6 @@ jQuery(document).ready(function($){
 
 
 
-function loadPageTwo(){
-	window.location.href = "http://127.0.0.1:5501/game-list.html"
-}
-
-
-
-function runTimeout(){
-	setTimeout(loadPageTwo, 550)
-}
-
 
 
 
@@ -90,3 +80,4 @@ function runTimeout(){
 //         }
 //     })
 // });
+
