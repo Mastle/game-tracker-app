@@ -1,4 +1,3 @@
-<!-- Minor adjustments on this page and then begin planning the backend (tomorrow) -->
 <?php include './inc/header.php' ?>
     <section class="game-details pb-3">
     <div class="container d-flex justify-content-center">
@@ -99,5 +98,17 @@
     </script>
 <?php include './inc/footer.php' ?>
 
+
+<!-- Current step:
+      1- Design your database
+          A- Forget about comments, make sure every user can add the games to their list of favorite games 
+          B- then add the comments table to your database
+      2- Watch a brad video on SQL
+      3- review your database
+      4- implement the  first version of the database
+      5- Create the log in system <--
+      6- Create "add game to your list" functionality
+      7- Upgrade the database
+-->
 
 
