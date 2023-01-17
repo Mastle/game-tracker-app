@@ -1,3 +1,19 @@
+<?php
+// if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
+//     echo "<script>" . "window.location.href='./login.php';" . "</script>";
+//     exit;}
+     session_start();
+
+     if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {
+        $log_in_status = "log out" ;
+        $login_directory = "./logout.php";
+        
+    } else {
+        $log_in_status = "log in";
+        $login_directory = "./login.php";
+    }
+  
+  ?>
 <?php include './inc/header.php' ?>
 <div class="container min-vh-100 text-center mt-5 pt-5">
 <h1>About us</h1>

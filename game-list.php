@@ -1,3 +1,17 @@
+<?php
+
+session_start();
+
+if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {
+    $log_in_status = "log out" ;
+    $login_directory = "./logout.php";
+    
+} else {
+    $log_in_status = "log in";
+    $login_directory = "./login.php";
+}
+  
+  ?>
 <?php include './inc/header.php' ?>
     <h1 class="ms-5 mt-3" style="color: var(--han-blue)">Your Game List</h1>
     <div class="container mt-5 d-flex justify-content-center">

@@ -27,8 +27,8 @@
                     <a class="nav-link" href="./game-list.php"><i class="fa fa-gamepad"></i>Game List</a>
                 </li>
                 <li class="nav-item" id="nav-item-three">
-                    <a class="nav-link" href="./login.php"><i class="fa fa-user" aria-hidden="true"></i>
-                        log in</a>
+                    <a class="nav-link" href=<?php echo $login_directory?>><i class="fa fa-user" aria-hidden="true"></i>
+                    <?= $log_in_status ?></a>
                 </li>
                 <li class="nav-item" id="nav-item-four">
                     <a class="nav-link" href="./about.php"><i class="fa fa-info"></i>About</a>
@@ -36,3 +36,4 @@
             </ul>
         </div>
     </nav>
+

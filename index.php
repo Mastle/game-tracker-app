@@ -1,3 +1,19 @@
+<?php
+
+     session_start();
+
+    if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {
+        $log_in_status = "log out" ;
+        $login_directory = "./logout.php";
+        
+    } else {
+        $log_in_status = "log in";
+        $login_directory = "./login.php";
+    }
+
+  
+  ?>
+
 <?php include './inc/header.php' ?>
     <section class="game-details pb-3">
     <div class="container d-flex justify-content-center">
@@ -100,15 +116,11 @@
 
 
 <!-- Current step:
-      1- Design your database
-          A- Forget about comments, make sure every user can add the games to their list of favorite games 
-          B- then add the comments table to your database
-      2- Watch a brad video on SQL
-      3- review your database
-      4- implement the  first version of the database
-      5- Create the log in system <--
-      6- Create "add game to your list" functionality
-      7- Upgrade the database
+      1- Finalizing the log in system:
+          A- Add a "welcome [username]" message to the navbar
+      2- Create "add game to your list" functionality
+      3- Upgrade the database
+      - (optinoal): Use a confirmation box before logging out
 -->
 
 

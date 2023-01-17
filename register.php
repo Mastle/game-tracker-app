@@ -1,4 +1,23 @@
 <?php
+
+
+// if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
+//     echo "<script>" . "window.location.href='./login.php';" . "</script>";
+//     exit;}
+     session_start();
+
+    if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {
+      echo "<script>" . "window.location.href='./'" . "</script>";
+
+        
+    } else {
+        $log_in_status = "log in";
+        $login_directory = "./login.php";
+
+    }
+
+
+
 include_once "./config/Database.php";
 
 
@@ -66,13 +85,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
       $password_err = "Password must contain at least 8 or more characters";
     }
   } 
-
+    
+    // echo $password;
   # Check input errors before insterting data into database
   if (empty($username_err) && empty($email_err) && empty($password_err)) {
     # Prepare an insert statement
     $sql_query = "INSERT INTO users (username, email, password) VALUES (:username, :email, :password)"; 
     $stmt = $pdo_connection->prepare($sql_query);
+    // echo $password;
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    echo '<br>';
+    // echo $hashed_password;
 
     if($stmt->execute(['username' => $username, 'email' => $email, 'password' => $hashed_password])){
       echo "<script>" . "alert('Registeration completed successfully. Login to continue.');" . "</script>";
@@ -96,7 +119,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
               <h1>Sign up</h1>
               <p>Please fill this form to register</p>
               <!-- form starts here -->
-              <form action="<?= htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+              <form action="<?= htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" novalidate>
                 <div class="mb-3">
                   <label for="username" class="form-label">Username</label>
                   <input type="text" class="form-control" name="username" id="username" value="<?= $username; ?>">
