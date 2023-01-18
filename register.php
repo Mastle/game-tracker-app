@@ -1,9 +1,4 @@
 <?php
-
-
-// if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
-//     echo "<script>" . "window.location.href='./login.php';" . "</script>";
-//     exit;}
      session_start();
 
     if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {

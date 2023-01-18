@@ -1,3 +1,16 @@
+<?php
+
+if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {
+        $welcome_username = "Welcome ".$_SESSION["username"];
+        
+    } else {
+        $welcome_username = "";
+        
+    }
+
+
+
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -17,6 +30,7 @@
         <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fas fa-bars text-white"></i>
         </button>
+        <p class="position-absolute start-50 top-0 pt-3 fs-5 fw-semibold text-light" id="welcome-message"><?= $welcome_username?></p>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto">
                 <div class="hori-selector"><div class="left"></div><div class="right"></div></div>

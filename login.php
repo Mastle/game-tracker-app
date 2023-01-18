@@ -57,7 +57,7 @@ if (empty($user_login_err) && empty($user_password_err)) {
                     $_SESSION["username"] = $username;
                     $_SESSION["loggedin"] = TRUE;
 
-                    echo "<script>" . "alert('Welcome Mastle');" . "</script>";
+                    echo "<script>" . "alert('You have Logged in successfully');" . "</script>";
 
                     echo "<script>" . "window.location.href='./'" . "</script>";
                     exit;
