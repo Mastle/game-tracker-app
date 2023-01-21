@@ -1,7 +1,7 @@
 <?php
 
      session_start();
-
+    // Check and see if user is logged in
     if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {
         $log_in_status = "log out" ;
         $login_directory = "./logout.php";
@@ -10,6 +10,45 @@
         $log_in_status = "log in";
         $login_directory = "./login.php";
     }
+
+
+
+    // Get game  
+    
+   include_once "./config/Database.php";
+   $pdo_obj = new Database();
+   $pdo_connection = $pdo_obj->connect();
+   $sql_query = "SELECT * FROM games WHERE name = 'Metro: Exodus'";
+   $stmt = $pdo_connection->prepare($sql_query);
+   $stmt->execute();
+
+   $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+    $game_id = $row['id'];
+    $game_name = $row['name'];
+    $game_director = $row['director'];
+    $game_publisher = $row['publisher'];
+    $game_designer = $row['designer'];
+    $game_writer = $row['writer'];
+    $game_developer = $row['developer'];
+    $game_picture_path = $row['picture_path'];
+
+    echo $game_id;
+    echo "<br>";
+    echo $game_name;
+    echo "<br>";
+    echo $game_director;
+    echo "<br>";
+    echo $game_publisher;
+    echo "<br>";
+    echo $game_designer;
+    echo "<br>";
+    echo $game_writer;
+    echo "<br>";
+    echo $game_developer;
+    echo "<br>";
+    echo $game_picture_path;
 
     
   ?>
@@ -120,6 +159,7 @@
       1- Create "add game to your list" functionality
          A- Add multiple games to the "games" table, retreive them on your webapp
          B- Create the search function
+            i. It looks like the search function can be created on the main page, and an extra page is not needed
       2- Upgrade the database
       - (optional): Re-center the "Welcome" message
       - (optinoal): Use a confirmation box before logging out

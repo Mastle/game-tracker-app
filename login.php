@@ -44,9 +44,7 @@ if (empty($user_login_err) && empty($user_password_err)) {
     $stmt = $pdo_connection->prepare($sql_query);
 
     if($stmt->execute(['username' => $user_login, 'email' => $user_login])){
-        
-        // var_dump($stmt->rowCount());
-        
+                
         if($stmt->rowCount() == 1){
             $stmt->bindColumn('id', $id);
             $stmt->bindColumn('username', $username);
@@ -82,11 +80,6 @@ if (empty($user_login_err) && empty($user_password_err)) {
 
 }
 ?>
-
-
-
-
-
 
 <?php include './inc/header.php' ?>
     <div class="container">

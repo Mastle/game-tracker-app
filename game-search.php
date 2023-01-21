@@ -1,1 +1,0 @@
-<!-- First retreive a game, then create the search function -->
