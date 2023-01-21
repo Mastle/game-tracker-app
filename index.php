@@ -12,21 +12,20 @@
     }
 
     
-
-  
   ?>
 
 <?php include './inc/header.php' ?>
     <section class="game-details pb-3">
     <div class="container d-flex justify-content-center">
-        <form class="search-input-wrapper ms-5 pt-5"action="search.php" method="GET">
+        <form class="search-input-wrapper ms-5 pt-5" action="search.php" method="GET">
             <input class="search-input form-control" type="text" name="search_query" placeholder="Look up a game..." />
-            <input class="btn btn-primary" type="submit" value="Search" />
+            <input class="btn btn-primary" type="submit" value="Search"/>
         </form>
     </div>
     <div class="container d-flex justify-content-center mt-5 pt-5">
     <img class="framed" src="./assets/mock-game-image-1.jpg" alt="random image">
     </div>
+    <div class="text-center pt-5 fs-1 mt-5 fw-semibold"><p>Metro: exodus</p></div>
     <div class="container mt-5 pt-5">
         <ul class="pe-3 pt-2">  
             <li>
@@ -54,7 +53,7 @@
     <div class="btn-wrapper container d-flex justify-content-center mt-5">
     <button class="btn btn-primary" type="submit">Add game to your list</button>
     </div>
-    <!-- Looking ahead: Create a function that displays a random game when a user visits the website for the first time -->
+    <!-- Looking ahead: Create a function that displays a random game when a user visits the website for the first time(random number generator) -->
 </section>
   <!-- will edit the comment section once there is an actual comment system-->
 <section class="comments">
@@ -118,10 +117,11 @@
 
 
 <!-- Current step:
-      1- Finalizing the log in system:
-          A- Add a "welcome [username]" message to the navbar
-      2- Create "add game to your list" functionality
-      3- Upgrade the database
+      1- Create "add game to your list" functionality
+         A- Add multiple games to the "games" table, retreive them on your webapp
+         B- Create the search function
+      2- Upgrade the database
+      - (optional): Re-center the "Welcome" message
       - (optinoal): Use a confirmation box before logging out
 -->
 
