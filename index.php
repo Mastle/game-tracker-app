@@ -13,12 +13,12 @@
 
 
 
-    // Get game  
-    // $game_query = '';
-    // if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    //    $game_query = $_POST['game_query'];
-    //    var_dump($game_query);
-    // }
+    //Get game  
+    $game_query = '';
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+       $game_query = $_POST['search_query'];
+       echo $game_query;
+    }
 
 
 
