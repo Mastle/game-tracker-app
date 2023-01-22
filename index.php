@@ -14,11 +14,21 @@
 
 
     // Get game  
-    
+    // $game_query = '';
+    // if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    //    $game_query = $_POST['game_query'];
+    //    var_dump($game_query);
+    // }
+
+
+
+
+
+
    include_once "./config/Database.php";
    $pdo_obj = new Database();
    $pdo_connection = $pdo_obj->connect();
-   $sql_query = "SELECT * FROM games WHERE name = 'Metro: Exodus'";
+   $sql_query = "SELECT * FROM games WHERE name = 'World of Warcraft'";
    $stmt = $pdo_connection->prepare($sql_query);
    $stmt->execute();
 
@@ -33,68 +43,49 @@
     $game_writer = $row['writer'];
     $game_developer = $row['developer'];
     $game_picture_path = $row['picture_path'];
-
-    echo $game_id;
-    echo "<br>";
-    echo $game_name;
-    echo "<br>";
-    echo $game_director;
-    echo "<br>";
-    echo $game_publisher;
-    echo "<br>";
-    echo $game_designer;
-    echo "<br>";
-    echo $game_writer;
-    echo "<br>";
-    echo $game_developer;
-    echo "<br>";
-    echo $game_picture_path;
-
     
   ?>
 
 <?php include './inc/header.php' ?>
     <section class="game-details pb-3">
     <div class="container d-flex justify-content-center">
-        <form class="search-input-wrapper ms-5 pt-5" action="search.php" method="GET">
-            <input class="search-input form-control" type="text" name="search_query" placeholder="Look up a game..." />
+        <form class="search-input-wrapper ms-5 pt-5" action="<?= htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" novalidate>
+            <input class="search-input form-control" type="text" name="search_query" placeholder="Look up a game..." value="" />
             <input class="btn btn-primary" type="submit" value="Search"/>
         </form>
     </div>
     <div class="container d-flex justify-content-center mt-5 pt-5">
-    <img class="framed" src="./assets/mock-game-image-1.jpg" alt="random image">
+    <img class="framed" src=<?= $game_picture_path?> alt="random image">
     </div>
-    <div class="text-center pt-5 fs-1 mt-5 fw-semibold"><p>Metro: exodus</p></div>
+    <div class="text-center pt-5 fs-1 mt-5 fw-semibold"><p><?= $game_name?></p></div>
     <div class="container mt-5 pt-5">
         <ul class="pe-3 pt-2">  
             <li>
                 <span class="title">Director</span>
-                <span class="name">James</span>
-            </li>
-            <li>
-                <span class="title">Publisher</span>
-                <span class="name">Lauren</span>
+                <span class="name"><?= $game_director?></span>
             </li>
             <li>
                 <span class="title">Designer</span>
-                <span class="name">Marcus</span>
+                <span class="name"><?= $game_designer?></span>
             </li>
             <li>
                 <span class="title">Writer</span>
-                <span class="name">Bryan</span>
+                <span class="name"><?= $game_writer?></span>
+            </li>
+            <li>
+                <span class="title">Publisher</span>
+                <span class="name"><?= $game_publisher?></span>
             </li>
             <li>
                 <span class="title">Developer</span>
-                <span class="name">James</span>
+                <span class="name"><?= $game_developer?></span>
             </li>
         </ul>
     </div>
     <div class="btn-wrapper container d-flex justify-content-center mt-5">
     <button class="btn btn-primary" type="submit">Add game to your list</button>
     </div>
-    <!-- Looking ahead: Create a function that displays a random game when a user visits the website for the first time(random number generator) -->
 </section>
-  <!-- will edit the comment section once there is an actual comment system-->
 <section class="comments">
     <div class="ms-2 mt-3">
     <i class="fa-regular fa-comments fa-2xl"></i>
@@ -102,7 +93,7 @@
     </div>
     <div class="container  my-3">
     <div class="comment mx-2 py-2">
-        <img src="assets/stock-user-pic-1.jpg" alt="">
+        <img src="assets/user-profile-pics/stock-user-pic-1.jpg" alt="">
         <span class="mx-2 fw-normal" style="color:var(--han-blue)">James serevino</span>
         <i class="fa-solid fa-star" style="color:var(--han-blue)"></i>
         <i class="fa-solid fa-star" style="color:var(--han-blue)"></i>
@@ -118,7 +109,7 @@
    <div class="even-comment-bg-color">
    <div class="container my-3">
     <div class="comment  py-2">
-        <img src="assets/stock-user-pic-1.jpg" alt="">
+        <img src="assets/user-profile-pics/stock-user-pic-1.jpg" alt="">
         <span class="mx-2">James serevino</span>
         <i class="fa-solid fa-star"></i>
         <i class="fa-solid fa-star"></i>
@@ -134,7 +125,7 @@
 </div>
     <div class="container my-3">
     <div class="comment py-2">
-        <img src="assets/stock-user-pic-1.jpg" alt="">
+        <img src="assets/user-profile-pics/stock-user-pic-1.jpg" alt="">
         <span class="mx-2" style="color:var(--han-blue)">James serevino</span>
         <i class="fa-solid fa-star" style="color:var(--han-blue)"></i>
         <i class="fa-solid fa-star" style="color:var(--han-blue)"></i>
@@ -157,10 +148,15 @@
 
 <!-- Current step:
       1- Create "add game to your list" functionality
-         A- Add multiple games to the "games" table, retreive them on your webapp
-         B- Create the search function
-            i. It looks like the search function can be created on the main page, and an extra page is not needed
-      2- Upgrade the database
+        -> B- Create the search function
+         C- Create the "game list" table
+         D- Allow users to add games to their list
+     2- Create the commenting functionality
+
+
+
+      - (optional): Try to recreate the nav menu with fontawesome latest version and Alpine JS after you're finished with the other parts 
+      - (optional): Create a function that displays a random game when a user visits the website for the first time(random number generator)
       - (optional): Re-center the "Welcome" message
       - (optinoal): Use a confirmation box before logging out
 -->
