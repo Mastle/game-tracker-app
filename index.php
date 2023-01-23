@@ -1,7 +1,6 @@
 <?php
 
-     session_start();
-    // Check and see if user is logged in
+ session_start();
     if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {
         $log_in_status = "log out" ;
         $login_directory = "./logout.php";
@@ -14,13 +13,28 @@
     include_once "./config/Database.php";
     $pdo_obj = new Database();
     $pdo_connection = $pdo_obj->connect();
+     
 
-
-    //Return a random game if search is not used
+    function return_random_game(){
+    
+    global  $pdo_connection, $game_name, $game_director, $game_publisher, $game_designer, $game_writer, $game_developer, $game_picture_path;
+  
     $game_id = rand(1,4);
     $sql_query_by_id = "SELECT * FROM games WHERE id = :id";
     $stmt = $pdo_connection->prepare($sql_query_by_id);
     $stmt->execute(['id' => $game_id]);
+   
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    $game_name = $row['name'];
+    $game_director = $row['director'];
+    $game_publisher = $row['publisher'];
+    $game_designer = $row['designer'];
+    $game_writer = $row['writer'];
+    $game_developer = $row['developer'];
+    $game_picture_path = $row['picture_path'];
+
+    }
 
 
     //Get game  
@@ -30,24 +44,30 @@
        $sql_query_by_name = "SELECT * FROM games WHERE name = :name";
        $stmt = $pdo_connection->prepare($sql_query_by_name);
        $stmt->execute(['name' => $game_query]);
+        if($stmt->rowcount() > 0){
+        
+               $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+               $game_name = $row['name'];
+               $game_director = $row['director'];
+               $game_publisher = $row['publisher'];
+               $game_designer = $row['designer'];
+               $game_writer = $row['writer'];
+               $game_developer = $row['developer'];
+               $game_picture_path = $row['picture_path'];
+
+          } else {
+
+                echo "<script>" . "alert('Game not found');" . "</script>";
+
+                return_random_game();
+         }
      
-    } 
+    }  else {
 
+        return_random_game();
 
-    //need a game not found function
-
-
-
-   $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-
-    $game_name = $row['name'];
-    $game_director = $row['director'];
-    $game_publisher = $row['publisher'];
-    $game_designer = $row['designer'];
-    $game_writer = $row['writer'];
-    $game_developer = $row['developer'];
-    $game_picture_path = $row['picture_path'];
+    }
     
   ?>
 
@@ -62,7 +82,7 @@
     <div class="container d-flex justify-content-center mt-5 pt-5">
     <img class="framed" src=<?= $game_picture_path?> alt="random image">
     </div>
-    <div class="text-center pt-5 fs-1 mt-5 fw-semibold"><p><?= $game_name?></p></div>
+    <div class="text-center pt-5 fs-1 mt-5 fw-semibold"><p><?= $game_name ?></p></div>
     <div class="container mt-5 pt-5">
         <ul class="pe-3 pt-2">  
             <li>
@@ -87,6 +107,11 @@
             </li>
         </ul>
     </div>
+    <?php  
+     // On submission, insert user's ID into the userid column, the game ID into the gameid column of the game list table. Also, "title", "release date" and "metascore" should also be added to the game list table from the games table
+     // But first, how can I grab data from another table and add it to a new table?
+     // use "gameid" foreign key to add data to 3 columns in the game_lists table
+    ?>
     <div class="btn-wrapper container d-flex justify-content-center mt-5">
     <button class="btn btn-primary" type="submit">Add game to your list</button>
     </div>
@@ -153,17 +178,19 @@
 
 <!-- Current step:
       1- Create "add game to your list" functionality
-         C- Create the "game list" table
          D- Allow users to add games to their list
      2- Create the commenting functionality
      3- Can you connect this webapp to an API?
 
 
-
+      - (optional): Allow users to rank their games on their game list
+      - (optional): Allow users to rank their games on their game list
+      - (optional): Clean up the "Get game" code by looping through two arrays at once
+      - (optional): Recreate the pop ups and notifications with AlpineJS
       - (optional): Add approximate string matching to your search function  
       - (optional): Try to recreate the nav menu with fontawesome latest version and Alpine JS after you're finished with the other parts 
       - (optional): Re-center the "Welcome" message
-      - (optinoal): Use a confirmationation logging out
+      - (optinoal): Use confirmationation for logging out
 -->
 
 

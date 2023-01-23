@@ -22,7 +22,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {
                 <th>Rank</th>
                 <th>Title</th>
                 <th>Release date</th>
-                <th >IGDB Rating</th>
+                <th>Metascore</th>
             </tr>
         </thead>
         <tbody>
