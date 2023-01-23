@@ -11,31 +11,36 @@
         $login_directory = "./login.php";
     }
 
+    include_once "./config/Database.php";
+    $pdo_obj = new Database();
+    $pdo_connection = $pdo_obj->connect();
+
+
+    //Return a random game if search is not used
+    $game_id = rand(1,4);
+    $sql_query_by_id = "SELECT * FROM games WHERE id = :id";
+    $stmt = $pdo_connection->prepare($sql_query_by_id);
+    $stmt->execute(['id' => $game_id]);
 
 
     //Get game  
     $game_query = '';
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
        $game_query = $_POST['search_query'];
-       echo $game_query;
-    }
+       $sql_query_by_name = "SELECT * FROM games WHERE name = :name";
+       $stmt = $pdo_connection->prepare($sql_query_by_name);
+       $stmt->execute(['name' => $game_query]);
+     
+    } 
 
 
+    //need a game not found function
 
 
-
-
-   include_once "./config/Database.php";
-   $pdo_obj = new Database();
-   $pdo_connection = $pdo_obj->connect();
-   $sql_query = "SELECT * FROM games WHERE name = 'World of Warcraft'";
-   $stmt = $pdo_connection->prepare($sql_query);
-   $stmt->execute();
 
    $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
-    $game_id = $row['id'];
     $game_name = $row['name'];
     $game_director = $row['director'];
     $game_publisher = $row['publisher'];
@@ -148,17 +153,17 @@
 
 <!-- Current step:
       1- Create "add game to your list" functionality
-        -> B- Create the search function
          C- Create the "game list" table
          D- Allow users to add games to their list
      2- Create the commenting functionality
+     3- Can you connect this webapp to an API?
 
 
 
+      - (optional): Add approximate string matching to your search function  
       - (optional): Try to recreate the nav menu with fontawesome latest version and Alpine JS after you're finished with the other parts 
-      - (optional): Create a function that displays a random game when a user visits the website for the first time(random number generator)
       - (optional): Re-center the "Welcome" message
-      - (optinoal): Use a confirmation box before logging out
+      - (optinoal): Use a confirmationation logging out
 -->
 
 
