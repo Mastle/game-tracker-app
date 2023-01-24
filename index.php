@@ -17,44 +17,69 @@
 
     function return_random_game(){
     
-    global  $pdo_connection, $game_name, $game_director, $game_publisher, $game_designer, $game_writer, $game_developer, $game_picture_path;
+    global  $pdo_connection, $game_id;
   
     $game_id = rand(1,4);
     $sql_query_by_id = "SELECT * FROM games WHERE id = :id";
     $stmt = $pdo_connection->prepare($sql_query_by_id);
     $stmt->execute(['id' => $game_id]);
-   
-    $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    $game_name = $row['name'];
-    $game_director = $row['director'];
-    $game_publisher = $row['publisher'];
-    $game_designer = $row['designer'];
-    $game_writer = $row['writer'];
-    $game_developer = $row['developer'];
-    $game_picture_path = $row['picture_path'];
+
+        global $game_item;
+    
+
+      while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+      extract($row);
+
+      $game_item = array(
+        'id' => $id,
+        'title' => $name,
+        'release_date' => $release_date,
+        'metascore' => $metascore,
+        'director' => $director,
+        'designer' => $designer,
+        'publisher' => $publisher,
+         'writer' => $writer,
+        'developer' => $developer,
+        'picture_path' => $picture_path,
+      );
+
+        
+    }
+
+
 
     }
 
 
     //Get game  
     $game_query = '';
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['search_query'])) {
        $game_query = $_POST['search_query'];
        $sql_query_by_name = "SELECT * FROM games WHERE name = :name";
        $stmt = $pdo_connection->prepare($sql_query_by_name);
        $stmt->execute(['name' => $game_query]);
         if($stmt->rowcount() > 0){
         
-               $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-               $game_name = $row['name'];
-               $game_director = $row['director'];
-               $game_publisher = $row['publisher'];
-               $game_designer = $row['designer'];
-               $game_writer = $row['writer'];
-               $game_developer = $row['developer'];
-               $game_picture_path = $row['picture_path'];
+              
+      while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        extract($row);
+  
+        $game_item = array(
+          'id' => $id,
+          'title' => $name,
+          'release_date' => $release_date,
+          'metascore' => $metascore,
+          'director' => $director,
+          'designer' => $designer,
+          'publisher' => $publisher,
+           'writer' => $writer,
+          'developer' => $developer,
+          'picture_path' => $picture_path,
+        );
+  
+          
+      }
 
           } else {
 
@@ -80,41 +105,51 @@
         </form>
     </div>
     <div class="container d-flex justify-content-center mt-5 pt-5">
-    <img class="framed" src=<?= $game_picture_path?> alt="random image">
+    <img class="framed" src=<?= $game_item['picture_path']?> alt="random image">
     </div>
-    <div class="text-center pt-5 fs-1 mt-5 fw-semibold"><p><?= $game_name ?></p></div>
+    <div class="text-center pt-5 fs-1 mt-5 fw-semibold"><p><?= $game_item['title'] ?></p></div>
     <div class="container mt-5 pt-5">
         <ul class="pe-3 pt-2">  
             <li>
                 <span class="title">Director</span>
-                <span class="name"><?= $game_director?></span>
+                <span class="name"><?= $game_item['director']?></span>
             </li>
             <li>
                 <span class="title">Designer</span>
-                <span class="name"><?= $game_designer?></span>
+                <span class="name"><?= $game_item['designer']?></span>
             </li>
             <li>
                 <span class="title">Writer</span>
-                <span class="name"><?= $game_writer?></span>
+                <span class="name"><?= $game_item['writer']?></span>
             </li>
             <li>
                 <span class="title">Publisher</span>
-                <span class="name"><?= $game_publisher?></span>
+                <span class="name"><?= $game_item['publisher']?></span>
             </li>
             <li>
                 <span class="title">Developer</span>
-                <span class="name"><?= $game_developer?></span>
+                <span class="name"><?= $game_item['developer']?></span>
             </li>
         </ul>
     </div>
     <?php  
-     // On submission, insert user's ID into the userid column, the game ID into the gameid column of the game list table. Also, "title", "release date" and "metascore" should also be added to the game list table from the games table
-     // But first, how can I grab data from another table and add it to a new table?
-     // use "gameid" foreign key to add data to 3 columns in the game_lists table
+    // Allow user to add game to their game list
+    // insert the game id from the games table and the user's id from the session id into the game_list table
+    // A post request does not seem to be the solution
+    // should I try AJAX?
+    // Either way, there must be an elaborate solution!
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add_game'])){
+        echo $game_id;
+    }
+     
+
     ?>
+    <form action="<?= htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" novalidate>
     <div class="btn-wrapper container d-flex justify-content-center mt-5">
-    <button class="btn btn-primary" type="submit">Add game to your list</button>
+    <input type="hidden" name='add_game'>
+    <input class="btn btn-primary" type="submit" value='Add game to your list'></input>
     </div>
+    </form>
 </section>
 <section class="comments">
     <div class="ms-2 mt-3">
@@ -178,11 +213,13 @@
 
 <!-- Current step:
       1- Create "add game to your list" functionality
-         D- Allow users to add games to their list
+        D- Allow users to add games to their list 
+        E- Make the game list page dynamic by adding AlpineJS to your code
      2- Create the commenting functionality
      3- Can you connect this webapp to an API?
 
 
+      - (optional): Use bootstrap tables for the game details section
       - (optional): Allow users to rank their games on their game list
       - (optional): Allow users to rank their games on their game list
       - (optional): Clean up the "Get game" code by looping through two arrays at once
