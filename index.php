@@ -132,8 +132,8 @@
         </ul>
     </div>
     <?php  
-    //Should I grab the user id and the game id with javascript by adding them to a hidden element through php?
-   // I should test grabbing elements and extract their innerhtml in javascript in a different file first
+
+   // console.log the game and user id
 
     ?>
     <div class="btn-wrapper container d-flex justify-content-center mt-5">
