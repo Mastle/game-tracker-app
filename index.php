@@ -132,17 +132,11 @@
         </ul>
     </div>
     <?php  
-    //Looks like I need to create an API route that will add the game to the user's game list
- 
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add_game'])){
-        echo $game_id;
-    }
-     
+    //Should I grab the user id and the game id with javascript by adding them to a hidden element through php?
+   // I should test grabbing elements and extract their innerhtml in javascript in a different file first
 
     ?>
-    <form action="<?= htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" novalidate>
     <div class="btn-wrapper container d-flex justify-content-center mt-5">
-    <input type="hidden" name='add_game'>
     <input class="btn btn-primary" type="submit" value='Add game to your list'></input>
     </div>
     </form>
@@ -209,8 +203,8 @@
 
 <!-- Current step:
       1- Create "add game to your list" functionality
-        D- Allow users to add games to their list 
-        E- Make the game list page dynamic by adding AlpineJS to your code
+        D- Allow users to add games to their list -> Create the php api that adds user id and game id to the gamelist table
+        E- (next sessions: )Then we will make the game list page dynamic by adding AlpineJS to your code
      2- Create the commenting functionality
      3- Can you connect this webapp to an API?
 

@@ -26,7 +26,8 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {
    $stmt->execute(['session_id' => $get_sesion_id]);
    
 
-   
+
+      if($stmt->rowCount() > 0){
      $games_arr = array();
 
       while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -44,6 +45,12 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {
    
       array_push($games_arr, $game_item);
      
+    }
+
+    } else {
+        //Return 0 inside an html element
+        //Grab the html element with Javascript, and then use that value to add an element that prompts the users games to their list
+
     }
 
    
@@ -64,7 +71,10 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {
             </tr>
         </thead>
         <tbody>
-            <!-- The length of the game_arr determines the number of table rows -->
+            <!-- 
+            - Need AlpineJS to render the table rows based on the number of games  that the user has added to their list
+            - The length of the game_arr determines the number of table rows 
+            -->
             <tr>
                 <td><img  src=<?= $games_arr[0]['picture_path'] ?> alt=""></td>
                 <td><?= $games_arr[0]['rank'] ?></td>
@@ -108,3 +118,4 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {
         navSelector.className = "nav-item active";
     </script>
 <?php include './inc/footer.php' ?>
+
