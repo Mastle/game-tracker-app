@@ -105,8 +105,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
    }
 
 }
+
+include './inc/header.php'
  ?>
- <?php   include './inc/header.php' ?>
     <div class="container">
         <div class="row min-vh-100 justify-content-center align-items-center">
           <div class="col-lg-5">

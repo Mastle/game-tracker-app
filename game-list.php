@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-
+ //prompt the user to sign up to see this page if they haven't signed up yet
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {
     $log_in_status = "log out" ;
     $login_directory = "./logout.php";
@@ -9,6 +9,8 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {
 } else {
     $log_in_status = "log in";
     $login_directory = "./login.php";
+    echo "<script>" . "window.location.href='./game-list-message.php'" . "</script>";
+
 }
 
    include_once './config/Database.php';
@@ -46,9 +48,9 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {
 
    
 
-
+    include './inc/header.php'
   ?>
-<?php include './inc/header.php' ?>
+
    <h1 class="ms-5 mt-3" style="color: var(--han-blue)">Your Game List</h1>
     <div class="container mt-5 d-flex justify-content-center">
      <table class="content-table">

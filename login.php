@@ -79,10 +79,11 @@ if (empty($user_login_err) && empty($user_password_err)) {
 
 
 }
+
+include './inc/header.php'
 ?>
 
-<?php include './inc/header.php' ?>
-    <div class="container">
+<div class="container">
         <div class="row min-vh-100 justify-content-center align-items-center">
             <div class="col-lg-5">
                 <div class="form-wrap border rounded p-4">

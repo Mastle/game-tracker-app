@@ -93,10 +93,9 @@
         return_random_game();
 
     }
-    
-  ?>
 
-<?php include './inc/header.php' ?>
+    include './inc/header.php'
+  ?>
     <section class="game-details pb-3">
     <div class="container d-flex justify-content-center">
         <form class="search-input-wrapper ms-5 pt-5" action="<?= htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" novalidate>
@@ -133,11 +132,8 @@
         </ul>
     </div>
     <?php  
-    // Allow user to add game to their game list
-    // insert the game id from the games table and the user's id from the session id into the game_list table
-    // A post request does not seem to be the solution
-    // should I try AJAX?
-    // Either way, there must be an elaborate solution!
+    //Looks like I need to create an API route that will add the game to the user's game list
+ 
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add_game'])){
         echo $game_id;
     }
@@ -221,8 +217,6 @@
 
       - (optional): Use bootstrap tables for the game details section
       - (optional): Allow users to rank their games on their game list
-      - (optional): Allow users to rank their games on their game list
-      - (optional): Clean up the "Get game" code by looping through two arrays at once
       - (optional): Recreate the pop ups and notifications with AlpineJS
       - (optional): Add approximate string matching to your search function  
       - (optional): Try to recreate the nav menu with fontawesome latest version and Alpine JS after you're finished with the other parts 
