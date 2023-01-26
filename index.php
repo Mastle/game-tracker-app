@@ -131,13 +131,10 @@
             </li>
         </ul>
     </div>
-    <?php  
-
-   // console.log the game and user id
-
-    ?>
     <div class="btn-wrapper container d-flex justify-content-center mt-5">
-    <input class="btn btn-primary" type="submit" value='Add game to your list'></input>
+    <input type="hidden" id="game-id-holder" value="<?= $game_id ?>" />
+    <input type="hidden" id="user-id-holder" value="<?= (isset($_SESSION['id'])) ? $_SESSION['id'] : 0 ?>" />
+    <input class="btn btn-primary" type="submit" value='Add game to your list' onclick=addGameToList()></input>
     </div>
     </form>
 </section>
@@ -198,13 +195,14 @@
         let navSelector = document.querySelector("#nav-item-one")
         navSelector.className = "nav-item active";
     </script>
+    <script src='./scripts/updateGameList.js'></script>
 <?php include './inc/footer.php' ?>
 
 
 <!-- Current step:
       1- Create "add game to your list" functionality
-        D- Allow users to add games to their list -> Create the php api that adds user id and game id to the gamelist table
-        E- (next sessions: )Then we will make the game list page dynamic by adding AlpineJS to your code
+        D- Allow users to add games to their list -> (next session:) Create the fetch function for adding game to the user's gamelist
+        E- Then we will make the game list page dynamic by adding AlpineJS to your code
      2- Create the commenting functionality
      3- Can you connect this webapp to an API?
 
