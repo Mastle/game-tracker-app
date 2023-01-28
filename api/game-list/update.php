@@ -1,5 +1,4 @@
 <?php 
- //guess I need to adjust the allow origin input for security reasons
  header('Access-Control-Allow-Origin: *');
  header('Content-Type: application/json');
  header('Access-Control-Allow-Methods: PUT');
@@ -21,13 +20,12 @@
 
  if($stmt->execute(['userid' => $received_user_id, 'gameid' => $received_game_id])){
     echo json_encode(
-        array('message' => 'Post Updated')
+        array('message' => 'list update successful')
       );
  } else {
     echo json_encode(
-        array('message' => 'Post Not Updated')
+        array('message' => 'list update failed')
       );
  }
- //Should trigger something on the homepage once a game has been added to the list
 
  

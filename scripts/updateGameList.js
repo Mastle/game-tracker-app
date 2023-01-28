@@ -1,23 +1,32 @@
 function addGameToList(){
     const  selectGameID = document.querySelector('#game-id-holder')
     const  selectUserID = document.querySelector('#user-id-holder')
-    const gameID = selectGameID.value
-    const userID = selectUserID.value
+    const guID = { gameid: selectGameID.value, userid: selectUserID.value}
+    const userID = selectUserID.value;
+    
+    
+    async function addGameToList(url = '', data = {}) {
+        const response = await fetch(url, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data) 
+        });
+        return response.json(); 
+      }
 
 
     if(userID == 0){
         window.location.href ='./game-list-message.php'
 
-    }else {
-  
-    console.log(gameID)
-    console.log(userID)
+    } else {
+            
+              addGameToList('http://localhost/game-tracker/api/game-list/update.php', guID)
+            .then((response) => console.log(response.message))
+          
+          
    }
-
-   //Create the fetch that'll make the API call to add game to the user's gamelist
-
-
-
 
    }
   

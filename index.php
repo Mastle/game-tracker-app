@@ -201,12 +201,12 @@
 
 <!-- Current step:
       1- Create "add game to your list" functionality
-        D- Allow users to add games to their list -> (next session:) Create the fetch function for adding game to the user's gamelist
-        E- Then we will make the game list page dynamic by adding AlpineJS to your code
+        E- Then we will make the game list page dynamic by adding AlpineJS to the code -> 
      2- Create the commenting functionality
      3- Can you connect this webapp to an API?
 
 
+      - (optional): Restrict api access to your website (might be a good idea to do this after deployment)
       - (optional): Use bootstrap tables for the game details section
       - (optional): Allow users to rank their games on their game list
       - (optional): Recreate the pop ups and notifications with AlpineJS
