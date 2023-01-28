@@ -20,11 +20,11 @@
 
  if($stmt->execute(['userid' => $received_user_id, 'gameid' => $received_game_id])){
     echo json_encode(
-        array('message' => 'list update successful')
+        array('message' => 'Game successfully added to list')
       );
  } else {
     echo json_encode(
-        array('message' => 'list update failed')
+        array('message' => 'Failed to add game to the list')
       );
  }
 

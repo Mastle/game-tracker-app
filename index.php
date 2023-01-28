@@ -97,6 +97,8 @@
     include './inc/header.php'
   ?>
     <section class="game-details pb-3">
+   <!-- TODO: Turn this into a pop message that appears and disappears through JS after adding a new game -->
+    <p class="game-list-notification position-sticky top-0 text-center w-25 text-white rounded pt-3 fs-5"> Game successfully added to list </p>
     <div class="container d-flex justify-content-center">
         <form class="search-input-wrapper ms-5 pt-5" action="<?= htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" novalidate>
             <input class="search-input form-control" type="text" name="search_query" placeholder="Look up a game..." value="" />
@@ -201,6 +203,7 @@
 
 <!-- Current step:
       1- Create "add game to your list" functionality
+        D- Create the game added successful message
         E- Then we will make the game list page dynamic by adding AlpineJS to the code -> 
      2- Create the commenting functionality
      3- Can you connect this webapp to an API?

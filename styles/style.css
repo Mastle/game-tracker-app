@@ -193,7 +193,11 @@ ul {
 	background-color: var(--maize);
 }
 
-
+.game-details .game-list-notification{
+	background-color: #5161ce; 
+	left: 37vw;
+	min-height: 60px
+}
 
 .search-input-wrapper{
 	flex-basis: 60%;
