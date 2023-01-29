@@ -1,7 +1,6 @@
 <?php
 
 session_start();
- //prompt the user to sign up to see this page if they haven't signed up yet
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {
     $log_in_status = "log out" ;
     $login_directory = "./logout.php";
@@ -48,16 +47,26 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {
     }
 
     } else {
-        //Return 0 inside an html element
-        //Grab the html element with Javascript, and then use that value to add an element that prompts the users games to their list
+        //no game found code block
 
     }
 
    
 
-    include './inc/header.php'
+    include './inc/header.php';
   ?>
-
+  <!-- 
+    Here's how we will make the game list table dynamic: 
+    The number of table rows need to be rendered based on the number of the sql data rows that exist 
+    -> Access games_arr in Javascript through php, and then call it a day 
+    -> TODO: Fix the problem with JSON parser (There is something wrong with the picture_path value of each game)
+    
+-->
+<script>
+    // let gameData = ''
+    // gameData = JSON.parse('<?= json_encode($games_arr); ?>')
+    // console.log(gameData)
+</script>
    <h1 class="ms-5 mt-3" style="color: var(--han-blue)">Your Game List</h1>
     <div class="container mt-5 d-flex justify-content-center">
      <table class="content-table">
@@ -71,10 +80,6 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {
             </tr>
         </thead>
         <tbody>
-            <!-- 
-            - Need AlpineJS to render the table rows based on the number of games  that the user has added to their list
-            - The length of the game_arr determines the number of table rows 
-            -->
             <tr>
                 <td><img  src=<?= $games_arr[0]['picture_path'] ?> alt=""></td>
                 <td><?= $games_arr[0]['rank'] ?></td>
