@@ -47,7 +47,8 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {
     }
 
     } else {
-        //no game found code block
+        //No game found code block
+        //First need to make the table dynamic with javascript
 
     }
 
@@ -55,17 +56,11 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {
 
     include './inc/header.php';
   ?>
-  <!-- 
-    Here's how we will make the game list table dynamic: 
-    The number of table rows need to be rendered based on the number of the sql data rows that exist 
-    -> Access games_arr in Javascript through php, and then call it a day 
-    -> TODO: Fix the problem with JSON parser (There is something wrong with the picture_path value of each game)
-    
--->
+
 <script>
-    // let gameData = ''
-    // gameData = JSON.parse('<?= json_encode($games_arr); ?>')
-    // console.log(gameData)
+    let gameData = ''
+    gameData = JSON.parse('<?= json_encode($games_arr); ?>')
+    console.log(gameData)
 </script>
    <h1 class="ms-5 mt-3" style="color: var(--han-blue)">Your Game List</h1>
     <div class="container mt-5 d-flex justify-content-center">

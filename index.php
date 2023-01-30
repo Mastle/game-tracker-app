@@ -132,7 +132,7 @@
         </ul>
     </div>
     <div class="btn-wrapper container d-flex justify-content-center mt-5">
-    <input type="hidden" id="game-id-holder" value="<?= $game_id ?>" />
+    <input type="hidden" id="game-id-holder" value="<?= (isset($game_id)) ? $game_id : $game_item['id'] ?>" />
     <input type="hidden" id="user-id-holder" value="<?= (isset($_SESSION['id'])) ? $_SESSION['id'] : 0 ?>" />
     <input class="btn btn-primary" type="submit" value='Add game to your list' onclick=addGameToList()></input>
     </div>
