@@ -3,6 +3,7 @@ function addGameToList(){
     const  selectUserID = document.querySelector('#user-id-holder')
     const guID = { gameid: selectGameID.value, userid: selectUserID.value}
     const userID = selectUserID.value;
+    
     async function addGameToList(url = '', data = {}) {
         const response = await fetch(url, {
           method: 'PUT',

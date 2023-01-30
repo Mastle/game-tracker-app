@@ -200,13 +200,17 @@
 
 
 <!-- Current step:
-      1- Create "add game to your list" functionality
-        E- Then we will make the game list page dynamic by adding AlpineJS to the code -> create an "add game" row for users without any game on their list -> need to create a delete game function as well
+     - Detour: 
+        -> Make the table show a message and the footer adjust properly when the user hasn't added a game or there is only a few games on the list
+        -> Make the Star icon smarter, and make it be positioned before the number
+        -> Add a delete function on the gamelist
+        -> Clean up the code
      2- Create the commenting functionality
      3- Can you connect this webapp to an API?
 
-
-      - (optional): Re-center the "Welcome" message
+      - (optional): if you don't find further use for AlpineJS, remove it and use plain JS instead
+      - (optional): add a delete game button to the game list
+      - (optional): Re-center the "Welcome" message, re-adjust all the UI elements after the app is finalized
       - (optional): Restrict api access to your website (might be a good idea to do this after deployment)
       - (optional): Use bootstrap tables for the game details section
       - (optional): Allow users to rank their games on their game list

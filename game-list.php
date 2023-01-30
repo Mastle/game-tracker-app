@@ -47,8 +47,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {
     }
 
     } else {
-        //No game found code block
-        //First need to make the table dynamic with javascript
+
 
     }
 
@@ -57,11 +56,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {
     include './inc/header.php';
   ?>
 
-<script>
-    let gameData = ''
-    gameData = JSON.parse('<?= json_encode($games_arr); ?>')
-    console.log(gameData)
-</script>
+
    <h1 class="ms-5 mt-3" style="color: var(--han-blue)">Your Game List</h1>
     <div class="container mt-5 d-flex justify-content-center">
      <table class="content-table">
@@ -74,48 +69,38 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {
                 <th>Metascore</th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <td><img  src=<?= $games_arr[0]['picture_path'] ?> alt=""></td>
-                <td><?= $games_arr[0]['rank'] ?></td>
-                <td><?= $games_arr[0]['title'] ?></td>
-                <td><?= $games_arr[0]['release_date'] ?></td>
-                <td ><i class="fa-solid fa-star"></i><?= $games_arr[0]['metascore'].'%' ?></td>
-            </tr>
-            <tr>
-                <td><img  src=<?= $games_arr[1]['picture_path'] ?> alt=""></td>
-                <td><?= $games_arr[1]['rank'] ?></td>
-                <td><?= $games_arr[1]['title'] ?></td>
-                <td><?= $games_arr[1]['release_date'] ?></td>
-                <td ><i class="fa-solid fa-star"></i><?= $games_arr[1]['metascore'].'%' ?></td>
-            </tr>
-            <tr>
-            <td><img  src=<?= $games_arr[2]['picture_path'] ?> alt=""></td>
-                <td><?= $games_arr[2]['rank'] ?></td>
-                <td><?= $games_arr[2]['title'] ?></td>
-                <td><?= $games_arr[2]['release_date'] ?></td>
-                <td ><i class="fa-solid fa-star"></i><?= $games_arr[2]['metascore'].'%' ?></td>
-            </tr>
-            <tr>
-            <td><img  src=<?= $games_arr[3]['picture_path'] ?> alt=""></td>
-                <td><?= $games_arr[3]['rank'] ?></td>
-                <td><?= $games_arr[3]['title'] ?></td>
-                <td><?= $games_arr[3]['release_date'] ?></td>
-                <td ><i class="fa-solid fa-star"></i><?= $games_arr[3]['metascore'].'%' ?></td>
-            </tr>
-            <tr>
-            <td><img  src=<?= $games_arr[4]['picture_path'] ?> alt=""></td>
-                <td><?= $games_arr[4]['rank'] ?></td>
-                <td><?= $games_arr[4]['title'] ?></td>
-                <td><?= $games_arr[4]['release_date'] ?></td>
-                <td ><i class="fa-solid fa-star"></i><?= $games_arr[4]['metascore'].'%' ?></td>
-            </tr>
-         </tbody>
+        <tbody id="my-table">
+        </tbody>
      </table>
     </div>
     <script>
         let navSelector = document.querySelector("#nav-item-two")
         navSelector.className = "nav-item active";
-    </script>
+
+    let gameData = ''
+    gameData = JSON.parse('<?= json_encode($games_arr); ?>')
+    for ( i = 0 ; i < gameData.length ; i++){
+    let table = document.getElementById('my-table')
+    let row = table.insertRow(i)
+    let cellOne = row.insertCell(0)
+     let imgElement = document.createElement('img')
+     imgElement.setAttribute('src',gameData[i].picture_path)
+       cellOne.appendChild(imgElement)
+    let cellTwo = row.insertCell(1)
+    cellTwo.innerHTML = gameData[i].rank
+    let cellThree = row.insertCell(2)
+    cellThree.innerHTML = gameData[i].title
+    let cellFour = row.insertCell(3)
+    cellFour.innerHTML = gameData[i].release_date
+    let cellFive = row.insertCell(4)
+     let starIcon = document.createElement('i')
+     starIcon.className = "fa-solid fa-star"  //comparison operator is needed here to choose between the different types of star
+    cellFive.innerHTML = gameData[i].metascore + '  '
+    cellFive.appendChild(starIcon)
+
+
+  }
+
+</script>
 <?php include './inc/footer.php' ?>
 
