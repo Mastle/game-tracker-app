@@ -11,8 +11,8 @@
        
        include './inc/header.php'
        ?>
-      <div class="container  min-vh-100 text-center d-flex justify-content-center align-items-center pb-5">
-      <h1><a href='./login.php'>Log in</a> to create your game list</h1>
+      <div class="container  min-vh-100 text-center d-flex justify-content-center align-items-start pt-5 fs-3">
+      <p><a href='./login.php'>Log in</a> to create your game list</p>
       </div>
       <script>
             let navSelector = document.querySelector("#nav-item-two")
