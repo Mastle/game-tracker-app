@@ -26,14 +26,14 @@ function addGameToList(){
             .then((response) => {
             let newPara = document.createElement('p')
             newPara.className='game-list-notification position-sticky top-0 text-center w-25 text-white rounded pt-3 fs-5';
-            newPara.setAttribute('x-data','{show: true}')
-            newPara.setAttribute('x-init','setTimeout(() => show = false, 3000)')
-            newPara.setAttribute('x-show','show')
+            newPara.setAttribute('id','response-message')
             let newParaText = document.createTextNode(response.message)
             newPara.appendChild(newParaText)
             let section = document.querySelector('.game-details')
             let container = document.querySelector('.container')
             section.insertBefore(newPara, container)
+            changeDisplay()
+
           })
          
 
@@ -73,5 +73,18 @@ function addGameToList(){
 
    }
   
+   function changeDisplay(){
+    setTimeout(() =>
+    {
+      let newPara = document.querySelector('#response-message')
+      newPara.style.display = 'none'
+
+    }, 3000)
+     
+
+   }
+
+
+
   
   

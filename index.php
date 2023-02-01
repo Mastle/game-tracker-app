@@ -108,7 +108,7 @@
     </div>
     <div class="text-center pt-5 fs-1 mt-5 fw-semibold"><p><?= $game_item['title'] ?></p></div>
     <div class="container mt-5 pt-5">
-        <ul class="pe-3 pt-2">  
+        <ul class="pe-3 pt-2 text-center">  
             <li>
                 <span class="title">Director</span>
                 <span class="name"><?= $game_item['director']?></span>
@@ -201,25 +201,16 @@
 
 <!-- Current step:
      
-        
+
      2- Create the commenting functionality
-       - Detour: 
-         -> remove AlpineJS from this project (unnecessary)
-         -> Clean up the code
-         -> Re-center the "Welcome" message
-         -> Re-adjust the responsive mode of all pages
-         -> then get to creating the commenting function
      3- Can you connect this webapp to an API?
 
       - (optional): Prevent user from adding the same game twice
-      - (optional): if you don't find further use for AlpineJS, remove it and use plain JS instead
       - (optional): Restrict api access to your website (might be a good idea to do this after deployment)
       - (optional): Use bootstrap tables for the game details section
       - (optional): Allow users to rank their games on their game list
       - (optional): Recreate the pop ups and notifications with AlpineJS
       - (optional): Add approximate string matching to your search function  
-      - (optional): Try to recreate the nav menu with fontawesome latest version and Alpine JS after you're finished with the other parts 
-      - (optinoal): Use confirmationation for logging out
--->
+      - (optinoal): Use confirmationation(a more sophisticated system) for logging out
 
-
+    -->

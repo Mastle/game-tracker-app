@@ -26,7 +26,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {
    
 
 
-      if($stmt->rowCount() > 0){
+    if($stmt->rowCount() > 0){
      $games_arr = array();
 
       while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -73,7 +73,6 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {
         navSelector.className = "nav-item active";
 
     let gameData = ''
-    let gameListID = []
     gameData = JSON.parse('<?= json_encode($games_arr); ?>')
     if(gameData.length > 0){
       
@@ -109,12 +108,12 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {
            cellFour.innerHTML = gameData[i].release_date
            let cellFive = row.insertCell(4)
             let starIcon = document.createElement('i')
-            starIcon.className = "fa-solid fa-percent"  //comparison operator is needed here to choose between the different types of star
+            starIcon.className = "fa-solid fa-percent" 
            cellFive.innerHTML = gameData[i].metascore + '  '
            cellFive.appendChild(starIcon)
            let cellSix = row.insertCell(5)
             let crossIcon = document.createElement('i')
-            crossIcon.className = "fa-solid fa-times"  //comparison operator is needed here to choose between the different types of star
+            crossIcon.className = "fa-solid fa-times" 
             crossIcon.setAttribute('onclick','deleteGame(this)')
             crossIcon.style = 'cursor: pointer'
            cellSix.innerHTML = '  '
@@ -128,8 +127,6 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {
             let tableSelector = document.querySelector('table')
             let divSelector = document.querySelector('.container')
             divSelector.insertBefore(newPara, tableSelector)
-       
-   
      }
 
 

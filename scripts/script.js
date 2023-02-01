@@ -62,7 +62,6 @@ jQuery(document).ready(function($){
 
 
 
-// Toggle password visibility
 const userPasswordEl = document.querySelector("#password")
 const togglePasswordEl = document.querySelector("#togglePassword")
 

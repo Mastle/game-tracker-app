@@ -276,7 +276,10 @@ img.framed {
 	.game-details ul li:nth-child(4){
 		width: 80px;
 	}
-
+	
+	.search-input + input{
+		margin-top: 1rem;
+	}
 
 
   }
