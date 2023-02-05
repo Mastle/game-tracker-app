@@ -59,40 +59,45 @@
        $sql_query_by_name = "SELECT * FROM games WHERE name = :name";
        $stmt = $pdo_connection->prepare($sql_query_by_name);
        $stmt->execute(['name' => $game_query]);
-        if($stmt->rowcount() > 0){
+       if($stmt->rowcount() > 0){
         
               
-      while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        extract($row);
+         while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+           extract($row);
   
-        $game_item = array(
-          'id' => $id,
-          'title' => $name,
-          'release_date' => $release_date,
-          'metascore' => $metascore,
-          'director' => $director,
-          'designer' => $designer,
-          'publisher' => $publisher,
-           'writer' => $writer,
-          'developer' => $developer,
-          'picture_path' => $picture_path,
-        );
+           $game_item = array(
+             'id' => $id,
+             'title' => $name,
+             'release_date' => $release_date,
+             'metascore' => $metascore,
+              'designer' => $designer,
+              'director' => $director,
+             'publisher' => $publisher,
+              'writer' => $writer,
+             'developer' => $developer,
+             'picture_path' => $picture_path,
+           );
   
           
-      }
+            }
+
+            global $game_id;
+            $game_id = $game_item['id'];
+
+
 
           } else {
 
                 echo "<script>" . "alert('Game not found');" . "</script>";
 
                 return_random_game();
-         }
+           }
      
-    }  else {
-
-        return_random_game();
-
-    }
+      }  else {
+  
+          return_random_game();
+  
+      }
 
     include './inc/header.php'
   ?>
@@ -131,14 +136,84 @@
             </li>
         </ul>
     </div>
-    <div class="btn-wrapper container d-flex justify-content-center mt-5">
+    <div class="btn-wrapper container d-flex justify-content-center my-5">
     <input type="hidden" id="game-id-holder" value="<?= (isset($game_id)) ? $game_id : $game_item['id'] ?>" />
     <input type="hidden" id="user-id-holder" value="<?= (isset($_SESSION['id'])) ? $_SESSION['id'] : 0 ?>" />
     <input class="btn btn-primary" type="submit" value='Add game to your list' onclick=addGameToList()></input>
     </div>
     </form>
 </section>
-<section class="comments">
+<?php 
+ $sql_query_by_id = "SELECT * FROM comments WHERE gameid = :id";
+ $stmt = $pdo_connection->prepare($sql_query_by_id);
+ $stmt->execute(['id' => $game_id]);
+
+ 
+ $comments_arr = array();
+   while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+   extract($row);
+   $comment_item = array(
+     'id' => $id,
+     'gameid' => $gameid,
+     'userid' => $userid,
+     'commentbody' => $commentbody,
+   );
+
+   array_push($comments_arr, $comment_item);
+
+ }
+  
+
+
+
+ $sql_query_by_id = "SELECT * FROM users WHERE id = :id";
+ $stmt = $pdo_connection->prepare($sql_query_by_id);
+ $users_arr = array();
+
+  for($i=0;$i < count($comments_arr) ; $i++){
+
+
+ $stmt->execute(['id' => $comments_arr[$i]['userid']]);
+ while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+    extract($row);
+ 
+    $user_item = array(
+      'id' => $id,
+      'username' => $username,
+    );
+    array_push($users_arr, $user_item);
+    
+}
+}
+
+?>
+
+<p><?= $users_arr[0]['username'] ?></p>
+<br>
+<p><?= $comments_arr[0]['id']?></p>
+<br>
+<p><?= $comments_arr[0]['gameid']?></p>
+<br>
+<p><?= $comments_arr[0]['commentbody']?></p>
+<p><?= $users_arr[1]['username'] ?></p>
+<br>
+<p><?= $comments_arr[1]['id']?></p>
+<br>
+<p><?= $comments_arr[1]['gameid']?></p>
+<br>
+<p><?= $comments_arr[1]['commentbody']?></p>
+<p><?= $users_arr[2]['username'] ?></p>
+<br>
+<p><?= $comments_arr[2]['id']?></p>
+<br>
+<p><?= $comments_arr[2]['gameid']?></p>
+<br>
+<p><?= $comments_arr[2]['commentbody']?></p>
+
+
+
+<!-- If the comment object is empty, hide comments section -->
+<!-- <section class="comments">
     <div class="ms-2 mt-3">
     <i class="fa-regular fa-comments fa-2xl"></i>
     <h3 class="d-inline">Comments</h2>
@@ -190,7 +265,7 @@
         </p>
     </div>
     </div>
-    </section>
+    </section> -->
     <script>
         let navSelector = document.querySelector("#nav-item-one")
         navSelector.className = "nav-item active";
