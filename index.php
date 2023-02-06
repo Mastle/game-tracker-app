@@ -188,104 +188,100 @@
 
 ?>
 
-<p><?= $users_arr[0]['username'] ?></p>
-<br>
-<p><?= $comments_arr[0]['id']?></p>
-<br>
-<p><?= $comments_arr[0]['gameid']?></p>
-<br>
-<p><?= $comments_arr[0]['commentbody']?></p>
-<p><?= $users_arr[1]['username'] ?></p>
-<br>
-<p><?= $comments_arr[1]['id']?></p>
-<br>
-<p><?= $comments_arr[1]['gameid']?></p>
-<br>
-<p><?= $comments_arr[1]['commentbody']?></p>
-<p><?= $users_arr[2]['username'] ?></p>
-<br>
-<p><?= $comments_arr[2]['id']?></p>
-<br>
-<p><?= $comments_arr[2]['gameid']?></p>
-<br>
-<p><?= $comments_arr[2]['commentbody']?></p>
 
 
-
-<!-- If the comment object is empty, hide comments section -->
-<!-- <section class="comments">
-    <div class="ms-2 mt-3">
-    <i class="fa-regular fa-comments fa-2xl"></i>
-    <h3 class="d-inline">Comments</h2>
-    </div>
-    <div class="container  my-3">
-    <div class="comment mx-2 py-2">
-        <img src="assets/user-profile-pics/stock-user-pic-1.jpg" alt="">
-        <span class="mx-2 fw-normal" style="color:var(--han-blue)">James serevino</span>
-        <i class="fa-solid fa-star" style="color:var(--han-blue)"></i>
-        <i class="fa-solid fa-star" style="color:var(--han-blue)"></i>
-        <i class="fa-solid fa-star" style="color:var(--han-blue)"></i>
-        <i class="fa-solid fa-star" style="color:var(--han-blue)"></i>
-        <i class="fa-regular fa-star" style="color:var(--han-blue)"></i>
-        <p class="fs-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus minima voluptates libero nostrum, 
-            deserunt consequuntur numquam assumenda facilis ut dolores suscipit recusandae et neque, perferendis 
-            repellendus magnam consectetur nemo error.
-        </p>
+ <section class="comments">
+    <div class="ms-2 mt-3 " id="first-div">
+       <i class="fa-regular fa-comments fa-2xl"></i>
+       <h3 class="d-inline">Comments</h2>
     </div>
    </div>
-   <div class="even-comment-bg-color">
-   <div class="container my-3">
-    <div class="comment  py-2">
-        <img src="assets/user-profile-pics/stock-user-pic-1.jpg" alt="">
-        <span class="mx-2">James serevino</span>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-regular fa-star"></i>
-        <p class="fs-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus minima voluptates libero nostrum, 
-            deserunt consequuntur numquam assumenda facilis ut dolores suscipit recusandae et neque, perferendis 
-            repellendus magnam consectetur nemo error.
-        </p>
-    </div>
-    </div>
-</div>
-    <div class="container my-3">
-    <div class="comment py-2">
-        <img src="assets/user-profile-pics/stock-user-pic-1.jpg" alt="">
-        <span class="mx-2" style="color:var(--han-blue)">James serevino</span>
-        <i class="fa-solid fa-star" style="color:var(--han-blue)"></i>
-        <i class="fa-solid fa-star" style="color:var(--han-blue)"></i>
-        <i class="fa-solid fa-star" style="color:var(--han-blue)"></i>
-        <i class="fa-solid fa-star" style="color:var(--han-blue)"></i>
-        <i class="fa-regular fa-star" style="color:var(--han-blue)"></i>
-        <p class="fs-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus minima voluptates libero nostrum, 
-            deserunt consequuntur numquam assumenda facilis ut dolores suscipit recusandae et neque, perferendis 
-            repellendus magnam consectetur nemo error.
-        </p>
-    </div>
-    </div>
-    </section> -->
+    </section>
+    <!-- Create the input for leaving comments -->
+    
     <script>
         let navSelector = document.querySelector("#nav-item-one")
         navSelector.className = "nav-item active";
+
+        let usersArr = JSON.parse('<?= json_encode($users_arr) ?>')
+        let commentsArr = JSON.parse('<?= json_encode($comments_arr) ?>')
+        if( usersArr.length > 0 && commentsArr.length > 0){
+                for(i = 0 ; usersArr.length > 0 && commentsArr.length > 0 ; i++ ){
+               
+                 let newDivContainer = document.createElement('div')
+               
+                     newDivContainer.className = 'container my-3'
+                     newDivContainer.style= 'border-bottom: 1px solid var(--han-blue)'
+
+               
+                     let newDivComment = document.createElement('div')
+                     newDivComment.className = "comment mx-2 py-2"
+
+                
+                     let newImg = document.createElement('img')
+                     newImg.setAttribute('src','assets/user-profile-pics/stock-user-pic.webp')
+        
+        
+               
+                     let newSpan = document.createElement('span')
+                     newSpan.className = "mx-2 fw-bold fs-5"
+                     newSpan.innerHTML = usersArr[i].username
+        
+              
+                     let newPara = document.createElement('p')
+                     newPara.className = 'fs-5'
+                     newPara.innerHTML = commentsArr[i].commentbody
+               
+                     newDivComment.appendChild(newImg)
+                     newDivComment.appendChild(newSpan)
+                     newDivComment.appendChild(newPara)
+                     newDivContainer.appendChild(newDivComment)
+               
+                     const div = document.querySelector('#first-div')
+               
+                     div.insertAdjacentElement('afterend', newDivContainer)
+        
+                 }
+         } else {
+            let commentSection = document.querySelector('.comments')
+            commentSection.style = "display: none"
+         }
+
+
+        
+
+
+
     </script>
     <script src='./scripts/updateGameList.js'></script>
 <?php include './inc/footer.php' ?>
 
 
-<!-- Current step:
+
+
+
+
+
+
+<!-- 
+    current development process:
+      1- Wrap up and finalize the development process -> Allow users to leave comments ->  add more games -> finished!
+      2- Showcase the code and the app for Parviz -> (at the end: originally had bigger plans, such as making the search function super smart, connecting the app to a legitimate DB, figured I should spend that time on JS, REACT and CSS)
+      3- Ask for his input
+      4- Prepare app for deployment
      
 
-     2- Create the commenting functionality
-     3- Can you connect this webapp to an API?
 
-      - (optional): Prevent user from adding the same game twice
-      - (optional): Restrict api access to your website (might be a good idea to do this after deployment)
-      - (optional): Use bootstrap tables for the game details section
-      - (optional): Allow users to rank their games on their game list
-      - (optional): Recreate the pop ups and notifications with AlpineJS
-      - (optional): Add approximate string matching to your search function  
-      - (optinoal): Use confirmationation(a more sophisticated system) for logging out
+     post-production(optional): 
+      - Connect the app to a game DB through a legitimate API
+      - Make the search function smarter 
+      - Prevent user from adding the same game twice
+      - Allow users to upload profile pics
+      - Restrict api access to your website
+      - Use bootstrap tables for the game details section
+      - Allow users to rank their games on their game list
+      - Recreate the pop ups and notifications with AlpineJS
+      - Add approximate string matching to your search function  
+      - Use confirmationation(a more sophisticated system) for logging out
 
     -->
