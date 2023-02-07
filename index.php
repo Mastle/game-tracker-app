@@ -4,10 +4,13 @@
     if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {
         $log_in_status = "log out" ;
         $login_directory = "./logout.php";
+
         
     } else {
         $log_in_status = "log in";
         $login_directory = "./login.php";
+        $toggle_comments = 0;
+
     }
 
     include_once "./config/Database.php";
@@ -99,6 +102,8 @@
   
       }
 
+      setcookie('gameid',$game_id);
+      
     include './inc/header.php'
   ?>
     <section class="game-details pb-3">
@@ -190,23 +195,35 @@
 
 
 
- <section class="comments">
+<section class="comments">
     <div class="ms-2 mt-3 " id="first-div">
        <i class="fa-regular fa-comments fa-2xl"></i>
        <h3 class="d-inline">Comments</h2>
-    </div>
-   </div>
-    </section>
-    <!-- Create the input for leaving comments -->
+       <div class="container">
+<form id="comment-textarea" action="./post-comment.php" method="post" novalidate >
+<div class="form-floating">
+  <textarea name="comment" class="form-comment form-control" placeholder="Leave a comment here"></textarea>
+  <label for="floatingTextarea2">Leave a comment</label>
+</div>
+  <input type="submit" class="btn btn-primary my-3" value="Enter"></input>
+</form>
+</div>
+</div>
+</div>
+</section>
     
     <script>
         let navSelector = document.querySelector("#nav-item-one")
         navSelector.className = "nav-item active";
+        let commentSection = document.querySelector('.comments')
+
 
         let usersArr = JSON.parse('<?= json_encode($users_arr) ?>')
-        let commentsArr = JSON.parse('<?= json_encode($comments_arr) ?>')
+        let commentsRawJson = '<?= json_encode($comments_arr) ?>'
+        let commentsRawJsonFixed = commentsRawJson.replace(/(?:\r\n|\r|\n)/g, '\\n')
+        commentsArr = JSON.parse(commentsRawJsonFixed)
         if( usersArr.length > 0 && commentsArr.length > 0){
-                for(i = 0 ; usersArr.length > 0 && commentsArr.length > 0 ; i++ ){
+                for(i = 0 ; usersArr.length > i && commentsArr.length > i ; i++ ){
                
                  let newDivContainer = document.createElement('div')
                
@@ -222,7 +239,6 @@
                      newImg.setAttribute('src','assets/user-profile-pics/stock-user-pic.webp')
         
         
-               
                      let newSpan = document.createElement('span')
                      newSpan.className = "mx-2 fw-bold fs-5"
                      newSpan.innerHTML = usersArr[i].username
@@ -241,12 +257,24 @@
                
                      div.insertAdjacentElement('afterend', newDivContainer)
         
-                 }
-         } else {
-            let commentSection = document.querySelector('.comments')
+                 } 
+                } else if('<?= isset($_SESSION["loggedin"]) ?>' != 1){
             commentSection.style = "display: none"
          }
+              
 
+
+         let toggleCommentFrom = document.querySelector('#comment-textarea')
+
+
+                 if( '<?= isset($_SESSION["loggedin"]) ?>' == 1){
+            
+                  toggleCommentFrom.style = 'display: block'
+                 } else {
+
+                  toggleCommentFrom.style = 'display: none'
+
+                 }
 
         
 
