@@ -17,7 +17,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {
    $pdo_obj = new Database();
    $pdo_connection = $pdo_obj->connect();
    
-   $sql_query = "SELECT game_lists.id, game_lists.rank, games.name, games.release_date, games.metascore, games.picture_path 
+   $sql_query = "SELECT game_lists.id, games.name, games.release_date, games.metascore, games.picture_path 
    FROM game_lists 
    INNER JOIN games ON game_lists.gameid = games.id
    WHERE game_lists.userid = :session_id;";
@@ -35,7 +35,6 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {
       $game_item = array(
         'id' => $id,
         'title' => $name,
-        'rank' => $rank,
         'release_date' => $release_date,
         'metascore' => $metascore,
         'picture_path' => $picture_path,
@@ -55,6 +54,8 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {
     include './inc/header.php';
   ?>
   <script defer src="./scripts/updateGameList.js"></script>
+
+
    <section class="min-vh-100">
    <h1 class="color-han-blue ms-5 mt-3">Your Game List</h1>
     <div class="container mt-5 d-flex justify-content-center position-relative">
@@ -66,6 +67,8 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {
      </table>
     </div>
     </section>
+
+
     <script>
         let navSelector = document.querySelector("#nav-item-two")
         navSelector.className = "nav-item active";
@@ -79,13 +82,12 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {
            let cellOne = row.insertCell(0)
            cellOne.outerHTML = '<th></th>';
            let cellTwo = row.insertCell(1)
-           cellTwo.outerHTML = '<th>Rank</th>'
+           cellTwo.outerHTML = '<th>Title</th>'
            let cellThree = row.insertCell(2)
-           cellThree.outerHTML = '<th>Title</th>'
+           cellThree.outerHTML = '<th class="text-center">Release date</th>'
            let cellFour = row.insertCell(3)
-           cellFour.outerHTML = '<th>Release date</th>'
-           let cellFive = row.insertCell(4)
-           cellFive.outerHTML = '<th>Metascore</th>'
+           cellFour.outerHTML = '<th class="text-center">Metascore</th>'
+
          
 
       for ( i = 0 ; i < gameData.length ; i++){
@@ -97,23 +99,23 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {
             imgElement.setAttribute('src',gameData[i].picture_path)
             cellOne.appendChild(imgElement)
            let cellTwo = row.insertCell(1)
-           cellTwo.innerHTML = gameData[i].rank
+           cellTwo.innerHTML = gameData[i].title
            let cellThree = row.insertCell(2)
-           cellThree.innerHTML = gameData[i].title
+           cellThree.innerHTML = gameData[i].release_date
+           cellThree.style = "text-align: center"
            let cellFour = row.insertCell(3)
-           cellFour.innerHTML = gameData[i].release_date
+            let percentIcon = document.createElement('i')
+            percentIcon.className = "fa-solid fa-percent" 
+           cellFour.innerHTML = gameData[i].metascore + '  '
+           cellFour.style = 'text-align: center;'
+           cellFour.appendChild(percentIcon)
            let cellFive = row.insertCell(4)
-            let starIcon = document.createElement('i')
-            starIcon.className = "fa-solid fa-percent" 
-           cellFive.innerHTML = gameData[i].metascore + '  '
-           cellFive.appendChild(starIcon)
-           let cellSix = row.insertCell(5)
             let crossIcon = document.createElement('i')
             crossIcon.className = "fa-solid fa-times" 
             crossIcon.setAttribute('onclick','deleteGame(this)')
             crossIcon.style = 'cursor: pointer'
-           cellSix.innerHTML = '  '
-           cellSix.appendChild(crossIcon)
+           cellFive.innerHTML = '  '
+           cellFive.appendChild(crossIcon)
      } 
        } else {
 

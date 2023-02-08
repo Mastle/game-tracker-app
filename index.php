@@ -286,10 +286,8 @@
 <!-- 
     current development process:
       2- Showcase the code and the app for Parviz -> 
-      - gotta get rid of the rank column
-      - gotta add more games
-      - (at the end: originally had bigger plans, such as making the search function super smart, connecting the app to a legitimate DB, figured I should spend that time on JS, REACT and CSS)
-      3- Prepare app for deployment
+      - gotta add more games (10 games in total)
+      - Prepare app for deployment
      
 
 
