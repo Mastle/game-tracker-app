@@ -106,7 +106,7 @@
       
     include './inc/header.php'
   ?>
-    <section class="game-details pb-3">
+<section class="game-details pb-3">
     <div class="container d-flex justify-content-center">
         <form class="search-input-wrapper ms-5 pt-5" action="<?= htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" novalidate>
             <input class="search-input form-control" type="text" name="search_query" placeholder="Look up a game..." value="" />
@@ -114,7 +114,7 @@
         </form>
     </div>
     <div class="container d-flex justify-content-center mt-5 pt-5">
-    <img class="framed" src=<?= $game_item['picture_path']?> alt="random image">
+      <img class="framed" src=<?= $game_item['picture_path']?> alt="random image">
     </div>
     <div class="text-center pt-5 fs-1 mt-5 fw-semibold"><p><?= $game_item['title'] ?></p></div>
     <div class="container mt-5 pt-5">
@@ -142,11 +142,10 @@
         </ul>
     </div>
     <div class="btn-wrapper container d-flex justify-content-center my-5">
-    <input type="hidden" id="game-id-holder" value="<?= (isset($game_id)) ? $game_id : $game_item['id'] ?>" />
-    <input type="hidden" id="user-id-holder" value="<?= (isset($_SESSION['id'])) ? $_SESSION['id'] : 0 ?>" />
-    <input class="btn btn-primary" type="submit" value='Add game to your list' onclick=addGameToList()></input>
+      <input type="hidden" id="game-id-holder" value="<?= (isset($game_id)) ? $game_id : $game_item['id'] ?>" />
+      <input type="hidden" id="user-id-holder" value="<?= (isset($_SESSION['id'])) ? $_SESSION['id'] : 0 ?>" />
+      <input class="btn btn-primary" type="submit" value='Add game to your list' onclick=addGameToList()></input>
     </div>
-    </form>
 </section>
 <?php 
  $sql_query_by_id = "SELECT * FROM comments WHERE gameid = :id";
@@ -259,27 +258,20 @@
         
                  } 
                 } else if('<?= isset($_SESSION["loggedin"]) ?>' != 1){
-            commentSection.style = "display: none"
-         }
-              
+
+                    commentSection.style = "display: none"
+                }
+
+        let toggleCommentFrom = document.querySelector('#comment-textarea')
 
 
-         let toggleCommentFrom = document.querySelector('#comment-textarea')
-
-
-                 if( '<?= isset($_SESSION["loggedin"]) ?>' == 1){
+          if( '<?= isset($_SESSION["loggedin"]) ?>' == 1){
             
-                  toggleCommentFrom.style = 'display: block'
-                 } else {
+           toggleCommentFrom.style = 'display: block'
+         } else{
+           toggleCommentFrom.style = 'display: none'
 
-                  toggleCommentFrom.style = 'display: none'
-
-                 }
-
-        
-
-
-
+         }
     </script>
     <script src='./scripts/updateGameList.js'></script>
 <?php include './inc/footer.php' ?>
@@ -293,10 +285,11 @@
 
 <!-- 
     current development process:
-      1- Wrap up and finalize the development process -> Allow users to leave comments ->  add more games -> finished!
-      2- Showcase the code and the app for Parviz -> (at the end: originally had bigger plans, such as making the search function super smart, connecting the app to a legitimate DB, figured I should spend that time on JS, REACT and CSS)
-      3- Ask for his input
-      4- Prepare app for deployment
+      2- Showcase the code and the app for Parviz -> 
+      - gotta get rid of the rank column
+      - gotta add more games
+      - (at the end: originally had bigger plans, such as making the search function super smart, connecting the app to a legitimate DB, figured I should spend that time on JS, REACT and CSS)
+      3- Prepare app for deployment
      
 
 

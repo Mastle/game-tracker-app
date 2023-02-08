@@ -37,7 +37,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-# validate credentials
 if (empty($user_login_err) && empty($user_password_err)) {
     $sql_query = "SELECT id, username, password FROM users WHERE username = :username OR email = :email";
     $stmt = $pdo_connection->prepare($sql_query);
@@ -122,6 +121,19 @@ include './inc/header.php'
     <script>
         let navSelector = document.querySelector("#nav-item-three")
         navSelector.className = "nav-item active";
+
+        
+                 const userPasswordEl = document.querySelector("#password")
+                 const togglePasswordEl = document.querySelector("#togglePassword")
+
+                 togglePasswordEl.addEventListener("click", function () {
+                   if (this.checked === true) {
+                     userPasswordEl.setAttribute("type", "text")
+                   } else {
+                     userPasswordEl.setAttribute("type", "password")
+                   }
+                 });
+
     </script>
     <?php include './inc/footer.php' ?>
 

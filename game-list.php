@@ -48,8 +48,6 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {
 
     } else {
         $games_arr = '';
-
-
     }
 
    
@@ -58,7 +56,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {
   ?>
   <script defer src="./scripts/updateGameList.js"></script>
    <section class="min-vh-100">
-   <h1 class="ms-5 mt-3" style="color: var(--han-blue)" onclick=runReload()>Your Game List</h1>
+   <h1 class="color-han-blue ms-5 mt-3">Your Game List</h1>
     <div class="container mt-5 d-flex justify-content-center position-relative">
      <table class="content-table">
         <thead id="my-table-head">
@@ -76,8 +74,6 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {
     gameData = JSON.parse('<?= json_encode($games_arr); ?>')
     if(gameData.length > 0){
       
-           
-  
            let table = document.getElementById('my-table-head')
            let row = table.insertRow(0)
            let cellOne = row.insertCell(0)

@@ -384,3 +384,10 @@ img.framed {
 	font-weight:bold;
 	color: var(--han-blue);
   }
+  
+
+  /* --- Utility --- */
+
+.color-han-blue{
+	color: var(--han-blue);
+}
