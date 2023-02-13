@@ -13,7 +13,7 @@
   ?>
 <div class="container min-vh-100 text-center mt-4 pt-5">
 <h1>About us</h1>
-<p class="pt-3">Best app ever created</p>
+<p class="pt-3">Best app ever</p>
 </div>
 <script>
         let navSelector = document.querySelector("#nav-item-four")
